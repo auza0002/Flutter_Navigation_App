@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
         Expanded(
           child: Container(
             padding: const EdgeInsets.only(top: 100.0),
-            color: Colors.blue.shade900,
+            color: Colors.red.shade900,
             child: Transform.rotate(
               angle: -50,
               child: const Text("Braco Aleman",

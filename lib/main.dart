@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_navigation_app/screens/contact_screen.dart';
 import 'package:flutter_navigation_app/screens/data_screen.dart';
+import 'package:flutter_navigation_app/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,13 +15,20 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int currentPage = 0;
+  int pagesIndex = 0;
+
+  List<Widget> pages = const [HomeScreen(), DataScreen(), ContactScreen()];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Colors.red.shade500,
+      ),
       home: Scaffold(
-        body: const DataScreen(),
+        appBar: AppBar(title: const Text("Navigation")),
+        body: pages[pagesIndex],
         bottomNavigationBar: NavigationBar(
           destinations: const [
             NavigationDestination(icon: Icon(Icons.home), label: "Home"),
@@ -27,6 +36,12 @@ class _MyAppState extends State<MyApp> {
             NavigationDestination(
                 icon: Icon(Icons.contact_page), label: 'Contact'),
           ],
+          selectedIndex: pagesIndex,
+          onDestinationSelected: (int index) {
+            setState(() {
+              pagesIndex = index;
+            });
+          },
         ),
       ),
     );
