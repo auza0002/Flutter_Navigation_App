@@ -1,5 +1,7 @@
 # flutter_navigation_app
 
+Diego Auza
+
 A new Flutter project.
 
 ## Getting Started
